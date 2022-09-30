@@ -1,5 +1,7 @@
 package com.example.springboot.beans;
 
+import com.example.springboot.enums.EFoodFamily;
+
 import javax.persistence.*;
 
 @Entity()
@@ -23,7 +25,7 @@ public class Food {
     private Integer quantity;
 
     @Column(name = "family")
-    private Enum family;
+    private Enum<EFoodFamily> family;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "food_id", referencedColumnName = "id")

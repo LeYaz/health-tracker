@@ -1,5 +1,8 @@
 package com.example.springboot.beans;
 
+import com.example.springboot.enums.EReceipeCategory;
+import com.example.springboot.enums.EReceipeType;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,10 +21,10 @@ public class Receipe {
     private Date date;
 
     @Column(name = "type")
-    private Enum type;
+    private Enum<EReceipeType> type;
 
     @Column(name = "category")
-    private Enum category;
+    private Enum<EReceipeCategory> category;
 
     @Column(name = "is_favorite")
     private Boolean is_favorite;

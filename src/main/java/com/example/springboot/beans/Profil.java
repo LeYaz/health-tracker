@@ -1,5 +1,8 @@
 package com.example.springboot.beans;
 
+import com.example.springboot.enums.EFoodPreference;
+import com.example.springboot.enums.EUserSexe;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,7 +24,7 @@ public class Profil {
     private Integer height;
 
     @Column(name = "sexe")
-    private Enum sexe;
+    private Enum<EUserSexe> sexe;
 
     @Column(name = "created_at")
     private Date created_at;
@@ -33,7 +36,7 @@ public class Profil {
     private Integer weight;
 
     @Column(name = "food_preference")
-    private Enum food_preference;
+    private Enum<EFoodPreference> food_preference;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
