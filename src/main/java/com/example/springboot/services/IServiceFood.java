@@ -7,8 +7,8 @@ import java.util.List;
 public interface IServiceFood {
     public List<Food> getFoodByReceipe(final long receipe_id);
     public Food getFoodById(final long id);
-    public void createFood(final Food pfood);
-    public void updateFood(final Food pfood);
+    public Food createFood(final Food pfood);
+    public Food updateFood(final Food pfood);
     public void deleteFood(final long id);
 
 }

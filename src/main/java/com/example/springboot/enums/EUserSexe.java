@@ -1,7 +1,13 @@
 package com.example.springboot.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public enum EUserSexe {
-    HOMME,
-    FEMME,
-    UNKNOW
+    MAN("MAN"),
+    WOMAN("WOMAN"),
+    UNKNOW("UNKNOW");
+    private final String code;
 }

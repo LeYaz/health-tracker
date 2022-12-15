@@ -1,40 +1,48 @@
 package com.example.springboot.services;
 
 import com.example.springboot.beans.Monitoring;
+import com.example.springboot.repository.MonitoringRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service()
 public class ServiceMonitoring implements IServiceMonitoring{
-    @Override
+
+    private MonitoringRepository repository;
+
+    public ServiceMonitoring(MonitoringRepository repository){
+        this.repository =repository;
+    }
     public List<Monitoring> getMonitoringByProfilId(long id) {
+        //TODO
         return null;
     }
 
-    @Override
+
     public Monitoring getMonitoringById(long id) {
-        return null;
+        Optional<Monitoring> monitoring = this.repository.findById(id);
+        return monitoring.get();
     }
 
-    @Override
+
     public List<Monitoring> getMonitoringByDate(Date dateStart, Date dateEnd) {
+        //TODO
+
         return null;
     }
 
-    @Override
     public void addMonitoring(Monitoring monitoring) {
-
+        this.repository.saveAndFlush(monitoring);
     }
 
-    @Override
     public void updateMonitoring(Monitoring monitoring) {
-
+        this.repository.saveAndFlush(monitoring);
     }
 
-    @Override
     public void deleteMonitoring(long id) {
-
+        this.repository.deleteById(id);
     }
 }

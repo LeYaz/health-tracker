@@ -1,8 +1,14 @@
 package com.example.springboot.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public enum EFoodFamily {
-    VIANDES,
-    FECULENTS,
-    FRUITS,
-    LEGUMES
+    VIANDES("VIANDES"),
+    FECULENTS("FECULENTS"),
+    FRUITS("FRUITS"),
+    LEGUMES("LEGUMES");
+    private final String code;
 }

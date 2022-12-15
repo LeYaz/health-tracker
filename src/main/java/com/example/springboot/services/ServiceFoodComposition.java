@@ -1,34 +1,41 @@
 package com.example.springboot.services;
 
 import com.example.springboot.beans.FoodComposition;
+import com.example.springboot.repository.FoodCompositionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service()
 public class ServiceFoodComposition implements IServiceFoodComposition{
-    @Override
+
+    private FoodCompositionRepository repository;
+
+    public ServiceFoodComposition(FoodCompositionRepository repository){
+        this.repository = repository;
+    }
     public FoodComposition getFoodCompositionById(long id) {
-        return null;
+
+        return repository.findById(id).get();
     }
 
-    @Override
+
     public List<FoodComposition> getFoodCompositionByFoodId(long id) {
         return null;
     }
 
-    @Override
-    public void addFoodComposition(FoodComposition ffoodcomposition) {
 
+    public FoodComposition addFoodComposition(FoodComposition ffoodcomposition) {
+        return this.repository.saveAndFlush(ffoodcomposition);
     }
 
-    @Override
-    public void updateFoodComposition(FoodComposition ffoodcomposition) {
 
+    public FoodComposition updateFoodComposition(FoodComposition ffoodcomposition) {
+        return this.repository.saveAndFlush(ffoodcomposition);
     }
 
-    @Override
+
     public void deleteFoodComposition(long id) {
-
+        this.repository.deleteById(id);
     }
 }

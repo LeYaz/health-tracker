@@ -1,27 +1,29 @@
 package com.example.springboot.services;
 
 import com.example.springboot.beans.Profil;
+import com.example.springboot.repository.ProfilRepository;
 import org.springframework.stereotype.Service;
 
 @Service()
 public class ServiceProfil implements IServiceProfil{
-    @Override
+
+    private ProfilRepository repository;
+    public ServiceProfil(ProfilRepository profilRepository){
+        this.repository = profilRepository;
+    }
     public Profil getProfil(long id) {
-        return null;
+        return this.repository.findById(id).get();
     }
 
-    @Override
     public void addProfil(Profil pprofil) {
-
+        this.repository.saveAndFlush(pprofil);
     }
 
-    @Override
     public void updateProfil(Profil pprofil) {
-
+        this.repository.saveAndFlush(pprofil);
     }
 
-    @Override
     public void deleteProfil(long id) {
-
+        this.repository.deleteById(id);
     }
 }

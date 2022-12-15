@@ -1,34 +1,40 @@
 package com.example.springboot.services;
 
 import com.example.springboot.beans.Food;
+import com.example.springboot.repository.FoodRepository;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service()
 public class ServiceFood implements IServiceFood{
-    @Override
-    public List<Food> getFoodByReceipe(long receipe_id) {
-        return null;
+
+    private final FoodRepository repository;
+
+    public ServiceFood(FoodRepository foodRepository){
+        this.repository = foodRepository;
     }
 
-    @Override
+
+    public List<Food> getFoodByReceipe(long receipe_id){
+            return repository.findAll();
+    }
+
     public Food getFoodById(long id) {
-        return null;
+        return this.repository.findById(id).orElseThrow(() -> new NoSuchElementException("No entity found for " + id));
     }
 
-    @Override
-    public void createFood(Food pfood) {
-
+    public Food createFood(Food pfood) {
+        return this.repository.saveAndFlush(pfood);
     }
 
-    @Override
-    public void updateFood(Food pfood) {
-
+    public Food updateFood(Food pfood) {
+        return this.repository.saveAndFlush(pfood);
     }
 
-    @Override
     public void deleteFood(long id) {
-
+        this.repository.deleteById(id);
     }
 }

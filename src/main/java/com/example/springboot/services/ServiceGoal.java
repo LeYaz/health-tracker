@@ -1,40 +1,42 @@
 package com.example.springboot.services;
 
 import com.example.springboot.beans.Goal;
+import com.example.springboot.repository.GoalRepository;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 
 @Service
 public class ServiceGoal implements IServiceGoal {
 
-    @Transactional()
-    @Override
-    public Goal getGoalById(long id) {
-        return null;
+    private GoalRepository repository;
+
+    public ServiceGoal(GoalRepository goalRepository){
+        this.repository = goalRepository;
     }
 
-    @Transactional()
-    @Override
+    public Goal getGoalById(long id) {
+
+        return this.repository.findById(id).get();
+    }
+
+
     public Goal getGoalByProfilId(long id) {
         return null;
     }
 
-    @Transactional()
-    @Override
-    public void addGoal(Goal pgoal) {
 
+    public Goal addGoal(Goal pgoal) {
+        return this.repository.saveAndFlush(pgoal);
     }
 
-    @Transactional()
-    @Override
-    public void updateGoal(Goal pgoal) {
 
+    public Goal updateGoal(Goal pgoal) {
+        return this.repository.saveAndFlush(pgoal);
     }
 
-    @Transactional()
-    @Override
+
     public void deleteGoal(long id) {
-
+        this.repository.deleteById(id);
+        return;
     }
 }

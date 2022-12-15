@@ -1,6 +1,7 @@
 package com.example.springboot.beans;
 
 import com.example.springboot.enums.EFoodFamily;
+import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 

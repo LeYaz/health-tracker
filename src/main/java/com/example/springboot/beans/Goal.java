@@ -1,5 +1,4 @@
 package com.example.springboot.beans;
-
 import javax.persistence.*;
 
 @Entity()
