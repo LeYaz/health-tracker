@@ -1,13 +1,20 @@
 package com.example.springboot.beans;
 
+import com.example.springboot.dto.light.LightProfilDto;
 import com.example.springboot.enums.EFoodPreference;
 import com.example.springboot.enums.EUserSexe;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity()
 @Table(name="profil")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Profil {
     @Id
     @Column(name = "id", nullable = false)
@@ -38,89 +45,27 @@ public class Profil {
     @Column(name = "food_preference")
     private Enum<EFoodPreference> food_preference;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "profil")
     private User user_id;
 
     @ManyToOne
     private Monitoring monitoring;
 
     @ManyToOne
-    private Receipe receipe;
+    private Meal meal;
 
     @ManyToOne
     private Goal goal;
 
+    public void update(LightProfilDto lightProfilDto){
+        this.setName(lightProfilDto.getName() != null ? lightProfilDto.getName() : this.getName());
+        this.setSurname(lightProfilDto.getSurname() != null ? lightProfilDto.getSurname() : this.getSurname());
+        this.setHeight(lightProfilDto.getHeight() != null ? lightProfilDto.getHeight() : this.getHeight());
+        this.setSexe(lightProfilDto.getSexe() != null ? lightProfilDto.getSexe() : this.getSexe());
+        this.setBirth(lightProfilDto.getBirth() != null ? lightProfilDto.getBirth() : this.getBirth());
+        this.setWeight(lightProfilDto.getWeight() != null ? lightProfilDto.getWeight() : this.getWeight());
+        this.setFood_preference(lightProfilDto.getFood_preference() != null ? lightProfilDto.getFood_preference() : this.getFood_preference());
 
-    public String getName() {
-        return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public Enum getSexe() {
-        return sexe;
-    }
-
-    public void setSexe(Enum sexe) {
-        this.sexe = sexe;
-    }
-
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getBirth() {
-        return birth;
-    }
-
-    public void setBirth(Date birth) {
-        this.birth = birth;
-    }
-
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Integer weight) {
-        this.weight = weight;
-    }
-
-    public Enum getFood_preference() {
-        return food_preference;
-    }
-
-    public void setFood_preference(Enum food_preference) {
-        this.food_preference = food_preference;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

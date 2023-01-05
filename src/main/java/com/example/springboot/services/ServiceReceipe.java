@@ -1,6 +1,6 @@
 package com.example.springboot.services;
 
-import com.example.springboot.beans.Receipe;
+import com.example.springboot.beans.Meal;
 import com.example.springboot.repository.ReceipeRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,23 +15,23 @@ public class ServiceReceipe implements IServiceReceipe{
         this.repository = receipeRepository;
     }
 
-    public List<Receipe> getReceipes() {
+    public List<Meal> getReceipes() {
 
         return this.repository.findAll();
     }
 
 
-    public Receipe geReceipeById(long id) {
+    public Meal geReceipeById(long id) {
 
         return this.repository.findById(id).get();
     }
 
 
-    public void addReceipe(Receipe preceipe) {
+    public void addReceipe(Meal preceipe) {
         this.repository.saveAndFlush(preceipe);
     }
 
-    public void updateReceipe(Receipe preceipe) {
+    public void updateReceipe(Meal preceipe) {
         this.repository.saveAndFlush(preceipe);
     }
 
@@ -40,12 +40,12 @@ public class ServiceReceipe implements IServiceReceipe{
     }
 
 
-    public List<Receipe> getReceipeFavorite() {
+    public List<Meal> getReceipeFavorite() {
         return null;
     }
 
 
-    public List<Receipe> getReceipeByDate(Date dateStart, Date dateEnd) {
+    public List<Meal> getReceipeByDate(Date dateStart, Date dateEnd) {
         return null;
     }
 }

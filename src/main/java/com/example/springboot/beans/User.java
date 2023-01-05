@@ -1,12 +1,20 @@
 package com.example.springboot.beans;
 
+import com.example.springboot.dto.light.LightUserDto;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity()
-@Table(name = "user")
+@Table(name = "users")
+@NoArgsConstructor
+@Getter
+@Setter
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -16,28 +24,16 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "profil_id", referencedColumnName = "id")
+    private Profil profil;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void update(LightUserDto lightUserDto){
+        if(lightUserDto.getEmail() != null){
+            this.setEmail(lightUserDto.getEmail());
+        }
+        if(lightUserDto.getPassword() != null){
+            this.setPassword(lightUserDto.getPassword());
+        }
     }
 }
