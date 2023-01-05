@@ -29,7 +29,7 @@ public class Profil {
     private Enum<EUserSexe> sexe;
 
     @Column(name = "created_at")
-    private Date created_at;
+    private LocalDate created_at;
 
     @Column(name = "birth")
     private LocalDate birth;
@@ -61,6 +61,7 @@ public class Profil {
 
     public Profil(Long id, String name, String surname,
                   double weight, double height, User user_id, int age){
+
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -68,7 +69,6 @@ public class Profil {
         this.height = height;
         this.user_id = user_id;
         this.age = age;
-
     }
 
     public String getName() {
@@ -103,11 +103,11 @@ public class Profil {
         this.sexe = sexe;
     }
 
-    public Date getCreated_at() {
+    public LocalDate getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(LocalDate created_at) {
         this.created_at = created_at;
     }
 
@@ -119,11 +119,11 @@ public class Profil {
         this.birth = birth;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getWeight(double weight) {
+        return this.weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
