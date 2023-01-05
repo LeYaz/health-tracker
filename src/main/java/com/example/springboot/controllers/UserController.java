@@ -17,9 +17,13 @@ public class UserController {
     private User user;
 
     @Autowired
-    public UserController(ServiceUser serviceUser, User user){
-        this.serviceUser = serviceUser;
+    public UserController(User user){
         this.user = user;
+    }
+
+    @Autowired
+    public UserController(ServiceUser serviceUser){
+        this.serviceUser =serviceUser;
     }
 
     @GetMapping

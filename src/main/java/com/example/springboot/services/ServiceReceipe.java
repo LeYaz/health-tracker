@@ -20,12 +20,10 @@ public class ServiceReceipe implements IServiceReceipe{
         return this.repository.findAll();
     }
 
-
     public Receipe geReceipeById(long id) {
 
         return this.repository.findById(id).get();
     }
-
 
     public void addReceipe(Receipe preceipe) {
         this.repository.saveAndFlush(preceipe);
@@ -39,11 +37,9 @@ public class ServiceReceipe implements IServiceReceipe{
         this.repository.deleteById(id);
     }
 
-
     public List<Receipe> getReceipeFavorite() {
         return null;
     }
-
 
     public List<Receipe> getReceipeByDate(Date dateStart, Date dateEnd) {
         return null;
