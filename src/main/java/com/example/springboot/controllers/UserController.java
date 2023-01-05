@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/users")
+
 public class UserController {
 
     private ServiceUser serviceUser;
@@ -25,4 +26,5 @@ public class UserController {
     public List<User> getUsers(){
         return serviceUser.getUsers();
     }
+
 }
