@@ -4,9 +4,7 @@ import com.example.springboot.beans.User;
 import com.example.springboot.repository.UserRepository;
 import com.example.springboot.services.ServiceUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,15 +14,22 @@ import java.util.List;
 public class UserController {
 
     private ServiceUser serviceUser;
+    private User user;
 
     @Autowired
-    public UserController(ServiceUser serviceUser){
+    public UserController(ServiceUser serviceUser, User user){
         this.serviceUser = serviceUser;
+        this.user = user;
     }
 
     @GetMapping
     public List<User> getUsers(){
         return serviceUser.getUsers();
+    }
+
+    @PostMapping
+    public void registerNewUser(@RequestBody User user){
+        serviceUser.createUser(user);
     }
 
 }
