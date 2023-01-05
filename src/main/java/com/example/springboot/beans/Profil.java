@@ -4,6 +4,8 @@ import com.example.springboot.enums.EFoodPreference;
 import com.example.springboot.enums.EUserSexe;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 @Entity()
@@ -21,19 +23,19 @@ public class Profil {
     private String surname;
 
     @Column(name = "height")
-    private Integer height;
+    private double height;
 
     @Column(name = "sexe")
     private Enum<EUserSexe> sexe;
 
     @Column(name = "created_at")
-    private Date created_at;
+    private LocalDate created_at;
 
     @Column(name = "birth")
-    private Date birth;
+    private LocalDate birth;
 
     @Column(name = "weight")
-    private Integer weight;
+    private double weight;
 
     @Column(name = "food_preference")
     private Enum<EFoodPreference> food_preference;
@@ -51,6 +53,23 @@ public class Profil {
     @ManyToOne
     private Goal goal;
 
+    @Transient
+    private Integer age;
+
+    public Profil() {
+    }
+
+    public Profil(Long id, String name, String surname,
+                  double weight, double height, User user_id, int age){
+
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.weight =weight;
+        this.height = height;
+        this.user_id = user_id;
+        this.age = age;
+    }
 
     public String getName() {
         return name;
@@ -68,7 +87,7 @@ public class Profil {
         this.surname = surname;
     }
 
-    public Integer getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -84,27 +103,27 @@ public class Profil {
         this.sexe = sexe;
     }
 
-    public Date getCreated_at() {
+    public LocalDate getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(LocalDate created_at) {
         this.created_at = created_at;
     }
 
-    public Date getBirth() {
+    public LocalDate getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(LocalDate birth) {
         this.birth = birth;
     }
 
-    public Integer getWeight() {
-        return weight;
+    public double getWeight(double weight) {
+        return this.weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -118,6 +137,10 @@ public class Profil {
 
     public Long getId() {
         return id;
+    }
+
+    public int getAge(){
+        return Period.between(this.birth, LocalDate.now()).getYears();
     }
 
     public void setId(Long id) {
