@@ -1,16 +1,14 @@
 package com.example.springboot.services;
 
 import com.example.springboot.beans.User;
-import com.example.springboot.repository.ReceipeRepository;
 import com.example.springboot.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service()
-public class ServiceUser implements IServiceUser {
+@Service
+public class ServiceUser {
     private UserRepository userRepository;
 
     public ServiceUser(UserRepository userRepository){

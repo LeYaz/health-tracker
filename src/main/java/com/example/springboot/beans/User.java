@@ -1,9 +1,11 @@
 package com.example.springboot.beans;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-@Entity()
-@Table(name = "user")
+@Entity
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,8 +18,6 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    public User() {
-    }
 
     public User(String email, String password){
         this.email = email;
