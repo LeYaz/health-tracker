@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity()
 @Table(name="profil")
-@NoArgsConstructor
 @Getter
 @Setter
 public class Profil {
@@ -28,22 +28,24 @@ public class Profil {
     private String surname;
 
     @Column(name = "height")
-    private Integer height;
+    private double height;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "sexe")
-    private Enum<EUserSexe> sexe;
+    private EUserSexe sexe;
 
     @Column(name = "created_at")
-    private Date created_at;
+    private LocalDate created_at;
 
     @Column(name = "birth")
-    private Date birth;
+    private LocalDate birth;
 
     @Column(name = "weight")
-    private Integer weight;
+    private double weight;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "food_preference")
-    private Enum<EFoodPreference> food_preference;
+    private EFoodPreference food_preference;
 
     @OneToOne(mappedBy = "profil")
     private User user_id;
@@ -57,13 +59,16 @@ public class Profil {
     @ManyToOne
     private Goal goal;
 
+    public Profil(){
+        this.setCreated_at(LocalDate.now());
+    }
     public void update(LightProfilDto lightProfilDto){
         this.setName(lightProfilDto.getName() != null ? lightProfilDto.getName() : this.getName());
         this.setSurname(lightProfilDto.getSurname() != null ? lightProfilDto.getSurname() : this.getSurname());
-        this.setHeight(lightProfilDto.getHeight() != null ? lightProfilDto.getHeight() : this.getHeight());
+        this.setHeight(lightProfilDto.getHeight() != 0.0d ? lightProfilDto.getHeight() : this.getHeight());
         this.setSexe(lightProfilDto.getSexe() != null ? lightProfilDto.getSexe() : this.getSexe());
         this.setBirth(lightProfilDto.getBirth() != null ? lightProfilDto.getBirth() : this.getBirth());
-        this.setWeight(lightProfilDto.getWeight() != null ? lightProfilDto.getWeight() : this.getWeight());
+        this.setWeight(lightProfilDto.getWeight() != 0.0d ? lightProfilDto.getWeight() : this.getWeight());
         this.setFood_preference(lightProfilDto.getFood_preference() != null ? lightProfilDto.getFood_preference() : this.getFood_preference());
 
     }

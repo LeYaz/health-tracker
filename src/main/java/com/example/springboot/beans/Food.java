@@ -25,8 +25,9 @@ public class Food {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "family")
-    private Enum<EFoodFamily> family;
+    private EFoodFamily family;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "food_id", referencedColumnName = "id")

@@ -4,6 +4,7 @@ import com.example.springboot.enums.EReceipeCategory;
 import com.example.springboot.enums.EReceipeType;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity()
@@ -18,13 +19,15 @@ public class Meal {
     private String label;
 
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private Enum<EReceipeType> type;
+    private EReceipeType type;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "category")
-    private Enum<EReceipeCategory> category;
+    private EReceipeCategory category;
 
     @Column(name = "is_favorite")
     private Boolean is_favorite;

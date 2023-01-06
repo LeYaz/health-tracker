@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -14,9 +15,9 @@ import java.util.Date;
 public class LightProfilDto {
     private String name;
     private String surname;
-    private Integer height;
+    private double height;
     private EUserSexe sexe;
-    private Date birth;
-    private Integer weight;
+    private LocalDate birth;
+    private double weight;
     private EFoodPreference food_preference;
 }

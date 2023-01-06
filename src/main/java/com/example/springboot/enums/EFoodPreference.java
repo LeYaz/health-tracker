@@ -6,6 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum EFoodPreference {
+    NONE("NONE"),
     VEGAN("VEGAN"),
     VEGE("VEGE"),
     GLUTENFREE("GLUTENFREE"),

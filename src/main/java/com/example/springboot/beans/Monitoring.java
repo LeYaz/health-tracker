@@ -1,6 +1,7 @@
 package com.example.springboot.beans;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity()
@@ -12,10 +13,10 @@ public class Monitoring {
     private Long id;
 
     @Column(name = "weight")
-    private Integer weight;
+    private double weight;
 
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
 
     public Long getId() {
         return id;

@@ -24,10 +24,5 @@ public interface ProfilMapper {
 
     ProfilDto toDto(Profil bo);
 
-    @ValueMappings({
-            @ValueMapping(target = "MAN", source = "MAN"),
-            @ValueMapping(target = "WOMAN", source = "WOMAN"),
-            @ValueMapping(target = "UNKNOW", source = "UNKNOW")
-    })
-    EUserSexe map(EUserSexe value);
+
 }

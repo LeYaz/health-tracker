@@ -10,13 +10,13 @@ public class Goal {
     private Long id;
 
     @Column(name = "actual_weight")
-    private Integer actual_weight;
+    private double actual_weight;
 
     @Column(name = "goal_weight")
-    private Integer goal_weight;
+    private double goal_weight;
 
     @Column(name = "start_weight")
-    private Integer start_weight;
+    private double start_weight;
 
     public Long getId() {
         return id;

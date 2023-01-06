@@ -13,16 +13,16 @@ public class FoodComposition {
     private Long id;
 
     @Column(name = "glucides")
-    private Integer glucides;
+    private double glucides;
 
     @Column(name = "lipides")
-    private Integer lipides;
+    private double lipides;
 
     @Column(name = "proteins")
-    private Integer proteins;
+    private double proteins;
 
     @Column(name = "sugar")
-    private Integer sugar;
+    private double sugar;
 
     public Long getId() {
         return id;
