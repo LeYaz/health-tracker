@@ -12,7 +12,6 @@ public class ServiceProfil implements IServiceProfil{
 
     private ProfilRepository profilRepository;
 
-    @Autowired
     public ServiceProfil(ProfilRepository profilRepository)
     {
         this.profilRepository = profilRepository;

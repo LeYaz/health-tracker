@@ -14,7 +14,6 @@ public class UserController {
 
     private final ServiceUser serviceUser;
 
-    @Autowired
     public UserController(ServiceUser serviceUser){
         this.serviceUser = serviceUser;
     }

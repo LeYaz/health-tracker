@@ -14,7 +14,7 @@ import java.util.List;
 public class ReceipeController {
     private ServiceReceipe serviceReceipe;
 
-    @Autowired
+
     public ReceipeController(ServiceReceipe serviceReceipe){
         this.serviceReceipe = serviceReceipe;
     }

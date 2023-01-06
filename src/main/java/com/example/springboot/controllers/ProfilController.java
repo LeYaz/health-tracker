@@ -16,7 +16,6 @@ import java.util.List;
 public class ProfilController {
     private ServiceProfil serviceProfil;
 
-    @Autowired
     public ProfilController(ServiceProfil serviceProfil){
 
         this.serviceProfil = serviceProfil;

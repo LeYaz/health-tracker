@@ -13,7 +13,6 @@ import java.util.Optional;
 public class ServiceUser implements IServiceUser {
     private UserRepository userRepository;
 
-    @Autowired
     public ServiceUser(UserRepository userRepository){
         this.userRepository = userRepository;
     }
